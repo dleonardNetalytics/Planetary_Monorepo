@@ -1,2 +1,10 @@
-<app-nx-welcome></app-nx-welcome>
-<router-outlet></router-outlet>
+<div class="header-container">
+  <app-planetary-page-header
+    [title]="title"
+    [systemInfo]="systemInfo"
+    [numberOfPlanets]="numberOfPlanets"
+    [starMass]="starMass"
+  ></app-planetary-page-header>
+</div>
+
+<app-orbit-drawer></app-orbit-drawer>

@@ -14,7 +14,12 @@
     "skipLibCheck": true,
     "skipDefaultLibCheck": true,
     "baseUrl": ".",
-    "paths": {}
+    "paths": {
+      "@planetary-monorepo/shared-utils": ["shared-utils/src/index.ts"],
+      "@planetary-monorepo/vue-web-components": [
+        "vue-web-components/src/index.ts"
+      ]
+    }
   },
   "exclude": ["node_modules", "tmp"]
 }

@@ -1,0 +1,21 @@
+<div class="orbit-drawer">
+  <form [formGroup]="orbitForm" (ngSubmit)="calculateOrbits()">
+    <label for="solarMass">Solar Mass:</label>
+    <input id="solarMass" formControlName="solarMass" type="number" step="0.1" required>
+
+    <label for="numberOfPlanets">Number of Planets:</label>
+    <input id="numberOfPlanets" formControlName="numberOfPlanets" type="number" required>
+
+    <button type="submit" [disabled]="orbitForm.invalid">Calculate Orbits</button>
+  </form>
+
+  <div *ngIf="orbitalPeriods.length > 0">
+    <h3>Orbital Periods:</h3>
+    <ul>
+      <li *ngFor="let period of orbitalPeriods; let i = index">
+        Planet {{ i + 1 }}: {{ period }} years
+      </li>
+    </ul>
+    <canvas #orbitCanvas width="500" height="500"></canvas>
+  </div>
+</div>

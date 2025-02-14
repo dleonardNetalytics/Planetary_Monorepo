@@ -1,0 +1,39 @@
+/* orbit-drawer.component.css */
+.orbit-drawer {
+  margin: 20px;
+}
+
+.orbit-drawer form {
+  display: flex;
+  flex-direction: column;
+}
+
+.orbit-drawer label {
+  margin-top: 10px;
+}
+
+.orbit-drawer input {
+  margin-bottom: 10px;
+}
+
+.orbit-drawer button {
+  margin-top: 10px;
+}
+
+.orbit-drawer {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin: 20px;
+}
+
+.orbit-drawer form {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.orbit-drawer canvas {
+  border: 1px solid #333; /* Optional: Add a border to the canvas */
+  margin-top: 20px;
+}
