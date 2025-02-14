@@ -1,6 +1,7 @@
 export default {
   displayName: 'planetary_angular',
   preset: '../../jest.preset.js',
+  setupFiles: ['jest-canvas-mock'],
   setupFilesAfterEnv: ['<rootDir>/src/test-setup.ts'],
   coverageDirectory: '../../coverage/apps/planetary_angular',
   transform: {
