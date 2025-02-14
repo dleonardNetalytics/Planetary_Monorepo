@@ -1,3 +1,4 @@
+<!-- app.component.html -->
 <div class="header-container">
   <app-planetary-page-header
     [title]="title"
@@ -7,4 +8,9 @@
   ></app-planetary-page-header>
 </div>
 
-<app-orbit-drawer></app-orbit-drawer>
+<app-orbit-drawer
+  [starMass]="starMass"
+  [numberOfPlanets]="numberOfPlanets"
+  [systemInfo]="systemInfo"
+  (systemUpdate)="updateHeader($event)"
+></app-orbit-drawer>

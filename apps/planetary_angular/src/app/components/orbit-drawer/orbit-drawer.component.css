@@ -1,39 +1,246 @@
-/* orbit-drawer.component.css */
-.orbit-drawer {
-  margin: 20px;
-}
-
-.orbit-drawer form {
+.orbit-drawer-wrapper {
   display: flex;
-  flex-direction: column;
-}
-
-.orbit-drawer label {
-  margin-top: 10px;
-}
-
-.orbit-drawer input {
-  margin-bottom: 10px;
-}
-
-.orbit-drawer button {
-  margin-top: 10px;
+  justify-content: center;
+  align-items: flex-start;
+  min-height: 100vh;
+  padding: 24px;
+  background-color: #121212;
 }
 
 .orbit-drawer {
   display: flex;
-  flex-direction: column;
-  align-items: center;
-  margin: 20px;
+  flex-direction: row;
+  gap: 24px;
+  padding: 24px;
+  background-color: #1a1a1a;
+  border-radius: 12px;
+  color: #e0e0e0;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.2);
+  width: 100%;
+  max-width: 1200px;
+  margin: 0 auto;
 }
 
-.orbit-drawer form {
+.controls {
+  width: 300px;
+  min-width: 300px;
   display: flex;
   flex-direction: column;
-  align-items: center;
+  gap: 24px;
+  background-color: #242424;
+  padding: 24px;
+  border-radius: 8px;
+  border: 1px solid #333;
+  max-height: 800px;
+  overflow-y: auto;
 }
 
-.orbit-drawer canvas {
-  border: 1px solid #333; /* Optional: Add a border to the canvas */
-  margin-top: 20px;
+.visualization-container {
+  flex: 1;
+  max-width: 800px;
+  aspect-ratio: 1;
+  border: 1px solid #333;
+  border-radius: 12px;
+  overflow: hidden;
+  background-color: #000;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3);
+}
+
+canvas {
+  width: 100%;
+  height: 100%;
+  display: block;
+}
+
+.star-controls,
+.planet-controls {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+label {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  font-weight: 500;
+  color: #e0e0e0;
+  font-size: 0.95rem;
+}
+
+input[type="number"] {
+  padding: 10px 12px;
+  border: 1px solid #404040;
+  border-radius: 6px;
+  width: 150px;
+  background-color: #2a2a2a;
+  color: #e0e0e0;
+  font-size: 0.9rem;
+  transition: all 0.2s ease;
+}
+
+.planet-distances {
+  border-top: 1px solid #333;
+  padding-top: 24px;
+}
+
+.planet-distance-control {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  margin: 12px 0;
+  padding: 12px;
+  border-radius: 6px;
+  background-color: #2a2a2a;
+}
+
+.orbital-period {
+  color: #999;
+  font-size: 0.9rem;
+  font-family: 'Roboto Mono', monospace;
+}
+
+h3 {
+  margin: 0 0 16px 0;
+  color: #e0e0e0;
+  font-size: 1.1rem;
+  font-weight: 500;
+}
+
+/* Hover and focus states */
+input[type="number"]:hover {
+  border-color: #505050;
+  background-color: #303030;
+}
+
+input[type="number"]:focus {
+  border-color: #666;
+  outline: none;
+  background-color: #303030;
+  box-shadow: 0 0 0 2px rgba(255, 255, 255, 0.1);
+}
+
+/* Remove spinner buttons from number inputs */
+input[type="number"]::-webkit-inner-spin-button,
+input[type="number"]::-webkit-outer-spin-button {
+  -webkit-appearance: none;
+  margin: 0;
+}
+
+input[type="number"] {
+  -moz-appearance: textfield;
+}
+
+/* Custom scrollbar */
+::-webkit-scrollbar {
+  width: 8px;
+}
+
+::-webkit-scrollbar-track {
+  background: #1a1a1a;
+}
+
+::-webkit-scrollbar-thumb {
+  background: #404040;
+  border-radius: 4px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: #505050;
+}
+
+/* Media queries for responsiveness */
+@media (max-width: 1200px) {
+  .orbit-drawer {
+    max-width: 100%;
+  }
+}
+
+@media (max-width: 900px) {
+  .orbit-drawer {
+    flex-direction: column;
+    align-items: center;
+  }
+
+  .controls {
+    width: 100%;
+    max-width: 500px;
+    max-height: none;
+  }
+
+  .visualization-container {
+    width: 100%;
+    max-width: 500px;
+  }
+}
+
+@media (max-width: 500px) {
+  .orbit-drawer-wrapper {
+    padding: 12px;
+  }
+
+  .orbit-drawer {
+    padding: 12px;
+    gap: 12px;
+  }
+
+  .controls {
+    padding: 16px;
+  }
+
+  input[type="number"] {
+    width: 100%;
+  }
+
+  .planet-distance-control {
+    padding: 8px;
+  }
+}
+
+/* Dark theme enhancements */
+.visualization-container {
+  background: radial-gradient(circle at center, #000000 0%, #0a0a0a 100%);
+}
+
+.controls {
+  background: linear-gradient(145deg, #242424 0%, #1a1a1a 100%);
+}
+
+.planet-distance-control {
+  background: linear-gradient(145deg, #2a2a2a 0%, #242424 100%);
+}
+
+/* Animation for hover states */
+input[type="number"],
+.planet-distance-control {
+  transition: all 0.2s ease-in-out;
+}
+
+.planet-distance-control:hover {
+  transform: translateX(4px);
+  background: linear-gradient(145deg, #2d2d2d 0%, #272727 100%);
+}
+
+/* Better visibility for orbital period */
+.orbital-period {
+  padding: 4px 8px;
+  background-color: rgba(0, 0, 0, 0.2);
+  border-radius: 4px;
+  display: inline-block;
+}
+
+/* Improved focus states for accessibility */
+input[type="number"]:focus-visible {
+  outline: 2px solid #666;
+  outline-offset: 2px;
+}
+
+/* Optional: Add subtle text shadow to headings */
+h3 {
+  text-shadow: 0 2px 4px rgba(0, 0, 0, 0.3);
+}
+
+/* Optional: Smooth transition for color changes */
+* {
+  transition: background-color 0.2s ease, border-color 0.2s ease, color 0.2s ease;
 }

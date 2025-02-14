@@ -1,21 +1,58 @@
-<div class="orbit-drawer">
-  <form [formGroup]="orbitForm" (ngSubmit)="calculateOrbits()">
-    <label for="solarMass">Solar Mass:</label>
-    <input id="solarMass" formControlName="solarMass" type="number" step="0.1" required>
+<div class="orbit-drawer-wrapper">
+  <div class="orbit-drawer">
+    <div class="controls">
 
-    <label for="numberOfPlanets">Number of Planets:</label>
-    <input id="numberOfPlanets" formControlName="numberOfPlanets" type="number" required>
+      <div class="planet-controls">
+        <label>
+          System Name:
+          <input type="string"
+                 [ngModel]="systemInfo"
+                 (ngModelChange)="updatesystemInfo($event)">
+        </label>
+      </div>
 
-    <button type="submit" [disabled]="orbitForm.invalid">Calculate Orbits</button>
-  </form>
+      <div class="star-controls">
+        <label>
+          Star Mass (Solar Masses):
+          <input type="number"
+                 [ngModel]="starMass"
+                 (ngModelChange)="updateStarMass($event)"
+                 min="0.1"
+                 step="0.1">
+        </label>
+      </div>
 
-  <div *ngIf="orbitalPeriods.length > 0">
-    <h3>Orbital Periods:</h3>
-    <ul>
-      <li *ngFor="let period of orbitalPeriods; let i = index">
-        Planet {{ i + 1 }}: {{ period }} years
-      </li>
-    </ul>
-    <canvas #orbitCanvas width="500" height="500"></canvas>
+      <div class="planet-controls">
+        <label>
+          Number of Planets:
+          <input type="number"
+                 [ngModel]="numberOfPlanets"
+                 (ngModelChange)="updatePlanetCount($event)"
+                 min="0"
+                 max="10">
+        </label>
+      </div>
+
+      <div class="planet-distances" *ngIf="planets.length > 0">
+        <h3>Planet Distances</h3>
+        <div *ngFor="let planet of planets; let i = index" class="planet-distance-control">
+          <label>
+            {{planet.name}} Distance (AU):
+            <input type="number"
+                   [ngModel]="planet.distance"
+                   (ngModelChange)="updatePlanetDistance(i, $event)"
+                   min="0.1"
+                   step="0.1">
+          </label>
+          <span class="orbital-period">
+            Orbital Period: {{planet.period.toFixed(2)}} years
+          </span>
+        </div>
+      </div>
+    </div>
+
+    <div class="visualization-container">
+      <canvas></canvas>
+    </div>
   </div>
 </div>

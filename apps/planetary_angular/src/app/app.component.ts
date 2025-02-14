@@ -13,13 +13,14 @@ import '../../../../dist/vue-web-components/index.mjs';
   schemas: [CUSTOM_ELEMENTS_SCHEMA]
 })
 export class AppComponent {
-  title = 'Solar System';
-  systemInfo = 'Milky Way';
-  numberOfPlanets = 8;
+  title = 'Orbital Period Calculator';
+  systemInfo = 'The Dave System';
+  numberOfPlanets = 0;
   starMass = 1.0;
 
-  updateHeader(data: { numberOfPlanets: number; starMass: number }) {
+  updateHeader(data: { numberOfPlanets: number; starMass: number, systemInfo: string }) {
     this.numberOfPlanets = data.numberOfPlanets;
     this.starMass = data.starMass;
+    this.systemInfo = data.systemInfo;
   }
 }
